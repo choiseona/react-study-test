@@ -6,7 +6,9 @@ import render from '@/utils/test/render';
 
 it('className prop으로 설정한 CSS 클래스가 적용된다.', async () => {
   await render(<TextField className="my-class" />);
-  expect(screen.getByPlaceholderText('텍스트를 입력해 주세요.')).toHaveClass(
-    'my-class',
-  );
+  const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+  screen.debug();
+
+  expect(textInput).toHaveClass('my-class');
 });
