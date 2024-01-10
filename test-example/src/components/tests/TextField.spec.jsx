@@ -12,3 +12,19 @@ it('className prop으로 설정한 CSS 클래스가 적용된다.', async () => 
 
   expect(textInput).toHaveClass('my-class');
 });
+
+it('기본 placeholder "텍스트를 입력해 주세요."가 노출된다.', async () => {
+  await render(<TextField />);
+
+  const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+  expect(textInput).toBeInTheDocument();
+});
+
+it('placeholder prop에 따라 placeholder가 변경된다.', async () => {
+  await render(<TextField placeholder="상품명을 입력해 주세요." />);
+
+  const textInput = screen.getByPlaceholderText('상품명을 입력해 주세요.');
+
+  expect(textInput).toBeInTheDocument();
+});
